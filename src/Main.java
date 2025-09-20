@@ -1,5 +1,6 @@
 import ChainResponsability.*;
 import Command.*;
+import State.Inscripcion;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +25,14 @@ public class Main {
         remote.ejecutar();
         remote.setCommand(solicitarCertificado);
         remote.ejecutar();
+
+        System.out.println("\n----------Prueba patron State----------");
+
+        Inscripcion inscripcion = new Inscripcion();
+
+        inscripcion.cambiarEstado();
+        inscripcion.cambiarEstado();
+        inscripcion.cambiarEstado();
 
     }
 }
