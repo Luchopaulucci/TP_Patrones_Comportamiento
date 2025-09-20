@@ -1,6 +1,10 @@
 import ChainResponsability.*;
 import Command.*;
-import State.Inscripcion;
+import State.*;
+import Strategy.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,5 +38,19 @@ public class Main {
         inscripcion.cambiarEstado();
         inscripcion.cambiarEstado();
 
+        System.out.println("\n----------Prueba patron Strategy----------");
+        //Se crea un alumno con un promedio simple a sacar
+        Student student = new Student(new PromedioSimple());
+        ArrayList <Integer> notas = new ArrayList<>(Arrays.asList(1,4,9,9));
+        System.out.println("Notas del Alumno\n_Matematicas: 1\n_Lengua: 4\n_Física: 9\n_Ciencias: 9");
+        student.promedio(notas);
+
+        //Se crea un alumno con un promedio ponderado a sacar
+        student.setCalculoNota(new PromedioPonderado());
+        student.promedio(notas);
+
+        //Se crea un alumno con un examen extra a sacar
+        student.setCalculoNota(new ExamenExtra());
+        student.promedio(notas);
     }
 }
