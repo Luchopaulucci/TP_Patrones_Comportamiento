@@ -2,9 +2,14 @@ import ChainResponsability.*;
 import Command.*;
 import State.*;
 import Strategy.*;
+import MementoPatron.*;
+import ObserverPatron.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+
 
 public class Main {
     public static void main(String[] args) {
@@ -52,5 +57,38 @@ public class Main {
         //Se crea un alumno con un examen extra a sacar
         student.setCalculoNota(new ExamenExtra());
         student.promedio(notas);
+
+        //APLICO PATRON MEMENTO--------------------
+
+        System.out.println("\n----------Prueba patron Memento---------------");
+
+        Examen examen = new Examen();
+        examen.responder("Pregunta1: A; Pregunta2: B");
+        System.out.println("Respuestas actuales: " + examen.getRespuestas());
+
+        AlumnoExamenCareTaker careTaker = new AlumnoExamenCareTaker();
+        careTaker.guardarProgreso(examen.save());
+
+        examen.responder("Pregunta1: C; Pregunta2: D");
+        System.out.println("Respuestas modificadas: " + examen.getRespuestas());
+
+        examen.restore(careTaker.obtenerProgreso());
+        System.out.println("Respuestas restauradas: " + examen.getRespuestas());
+
+
+        // PATRON OBSERVER
+
+        System.out.println("\n------------ Prueba de patron Observer-----------");
+
+        Curso curso = new Curso("Programacion II");
+        AlumnoObserver a1 = new AlumnoObserver("Belen ");
+        AlumnoObserver a2 = new AlumnoObserver("Fran ");
+
+        curso.agregarObservador(a1);
+        curso.agregarObservador(a2);
+
+        curso.cambiarHorarios("Lunes 10:00hs");
+        curso.notificar("Nuevo aviso: Parcial el 25 de Octubre");
+
     }
 }
