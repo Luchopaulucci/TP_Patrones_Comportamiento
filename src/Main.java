@@ -4,6 +4,7 @@ import State.*;
 import Strategy.*;
 import MementoPatron.*;
 import ObserverPatron.*;
+import Iterator.*;
 
 
 import java.util.ArrayList;
@@ -89,6 +90,21 @@ public class Main {
 
         curso.cambiarHorarios("Lunes 10:00hs");
         curso.notificar("Nuevo aviso: Parcial el 25 de Octubre");
+
+        System.out.println("\n------------ Prueba de patron Iterator-----------");
+
+        StudentCourse studentCourse = new StudentCourse("Franco Dagostino");
+
+        studentCourse.enroll(new Course("AN101", "Analisis I"));
+        studentCourse.enroll(new Course("SD101",  "Desarrollo de Software"));
+        studentCourse.enroll(new Course("DB201",  "Bases de datos"));
+
+        CourseIterator it = studentCourse.iterator();
+        System.out.println("Cursos " + studentCourse.getName() + ":");
+        while (it.hasNext()) {
+            Course c = it.next();
+            System.out.println(" - " + c.getCode() + " - " + c.getName());
+        }
 
     }
 }
