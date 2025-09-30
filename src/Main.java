@@ -5,6 +5,7 @@ import Strategy.*;
 import MementoPatron.*;
 import ObserverPatron.*;
 import Iterator.*;
+import Mediator.*;
 
 
 import java.util.ArrayList;
@@ -105,6 +106,22 @@ public class Main {
             Course c = it.next();
             System.out.println(" - " + c.getCode() + " - " + c.getName());
         }
+
+        System.out.println("\n------------ Prueba de patron Mediator-----------");
+
+        ChatMediator chat = new ChatRoom();
+
+        User s1 = new Students(chat, "Franco");
+        User s2 = new Students(chat, "Rossi");
+        User t1 = new Teachers(chat, "Ing. López");
+
+        chat.registrarUsuario(s1);
+        chat.registrarUsuario(s2);
+        chat.registrarUsuario(t1);
+
+        s1.enviar("Profe, ¿la consigna del TP usa Iterator y Mediator?");
+        t1.enviar("Sí, y recuerden subir el código con un README.");
+        s2.enviar("¡Gracias, profe!");
 
     }
 }
