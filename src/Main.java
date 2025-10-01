@@ -62,7 +62,7 @@ public class Main {
         student.setCalculoNota(new ExamenExtra());
         student.promedio(notas);
 
-        //APLICO PATRON MEMENTO--------------------
+        //APLICO PATRON MEMENTO---------------------
 
         System.out.println("\n----------Prueba patron Memento---------------");
 
@@ -98,9 +98,9 @@ public class Main {
 
         StudentCourse studentCourse = new StudentCourse("Franco Dagostino");
 
-        studentCourse.enroll(new Course("AN101", "Analisis I"));
-        studentCourse.enroll(new Course("SD101",  "Desarrollo de Software"));
-        studentCourse.enroll(new Course("DB201",  "Bases de datos"));
+        studentCourse.enroll(new Course("45567", "Analisis I"));
+        studentCourse.enroll(new Course("45682",  "Desarrollo de Software"));
+        studentCourse.enroll(new Course("78293",  "Bases de datos"));
 
         CourseIterator it = studentCourse.iterator();
         System.out.println("Cursos " + studentCourse.getName() + ":");
