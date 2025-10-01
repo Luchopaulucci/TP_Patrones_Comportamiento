@@ -6,6 +6,8 @@ import MementoPatron.*;
 import ObserverPatron.*;
 import Iterator.*;
 import Mediator.*;
+import Template.*;
+import Visitor.*;
 
 
 import java.util.ArrayList;
@@ -123,5 +125,26 @@ public class Main {
         t1.enviar("Sí, y recuerden subir el código con un README.");
         s2.enviar("¡Gracias, profe!");
 
+        System.out.println("\n------------ Prueba de patron Template-----------");
+
+        ReporteAcademico reporteCurso = new ReporteCurso("Programación Orientada a Objetos", 30, 8.5);
+        ReporteAcademico reporteAlumno = new ReporteAlumno("Juan Pérez", "Programación Orientada a Objetos", 9.0);
+
+        System.out.println("--- Reporte de Curso ---");
+        reporteCurso.generarReporte();
+
+        System.out.println("\n--- Reporte de Alumno ---");
+        reporteAlumno.generarReporte();
+
+        System.out.println("\n------------ Prueba de patron Visitor-----------");
+
+        Alumnoo alumno1 = new AlumnoRegular("Ana Gómez", 5000);
+        Alumnoo alumno2 = new AlumnoBecado("Luis Martínez", 5000, 50);
+
+        Visitor aplicarBeca = new AplicarBeca();
+
+        System.out.println("--- Aplicando beneficios ---");
+        alumno1.aceptar(aplicarBeca);
+        alumno2.aceptar(aplicarBeca);
     }
 }
